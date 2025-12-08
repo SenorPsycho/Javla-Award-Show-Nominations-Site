@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jävla Award Show 2025 – Nominations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #f5f1e6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* === CURTAINS (MAIN BACKGROUND) === */
+    .curtains {
+      position: fixed;
+      inset: 0;
+      background: url("curtains.jpg") center / cover no-repeat;
+      z-index: -4;
+    }
+
+    /* Darken curtains slightly */
+    .curtains-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: -3;
+    }
+
+    /* === BLURRED POSTER IN CENTER === */
+    .poster-bg {
+      position: fixed;
+      inset: -15%;
+      background: url("poster.jpg") center / cover no-repeat;
+      filter: blur(20px);
+      opacity: 0.55;
+      transform: scale(1.2);
+      z-index: -2;
+    }
+
+    .poster-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(
+        circle at center,
+        rgba(255,231,154,0.15),
+        rgba(10,8,3,0.85)
+      );
+      z-index: -1;
+    }
+
+    /* === GOLD CARD === */
+    .card {
+      background: linear-gradient(
+        180deg,
+        rgba(42,36,6,0.97),
+        rgba(23,19,3,0.97)
+      );
+      padding: 2.6rem;
+      border-radius: 18px;
+      max-width: 480px;
+      width: 92%;
+      box-shadow:
+        0 0 0 1px rgba(255,215,0,0.18),
+        0 30px 90px rgba(0,0,0,0.85),
+        inset 0 0 40px rgba(255,215,0,0.05);
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 1.75rem;
+      letter-spacing: 1px;
+      color: #ffe79a;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin: 0.6rem 0 2rem;
+      font-style: italic;
+    }
+
+    label {
+      display: block;
+      margin-top: 1.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 12px;
+      border: none;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 0.9rem;
+      box-shadow: inset 0 0 0 1px rgba(255,215,0,0.18);
+    }
+
+    select option { background: #1d1a05; }
+    textarea { resize: vertical; }
+
+    button {
+      margin-top: 2.2rem;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #f5d97a, #d4af37);
+      color: #2b2300;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 10px 30px rgba(212,175,55,0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 45px rgba(212,175,55,0.55);
+    }
+
+    footer {
+      margin-top: 1.8rem;
+      text-align: center;
+      font-size: 0.7rem;
+      opacity: 0.55;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background layers -->
+  <div class="curtains"></div>
+  <div class="curtains-overlay"></div>
+  <div class="poster-bg"></div>
+  <div class="poster-overlay"></div>
+
+  <!-- Nomination card -->
+  <form
+    class="card"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <h1>Jävla Award Show 2025</h1>
+    <div class="subtitle">
+      An extremely prestigious ceremony<br>
+      with absolutely no consequences.
+    </div>
+
+    <label>Category</label>
+    <select name="category" required>
+      <option value="">Choose wisely…</option>
+      <option>Best Aim</option>
+      <option>Most Improved Player</option>
+      <option>Grinder Award</option>
+      <option>Most Annoying (Fun Way)</option>
+      <option>Most Rage</option>
+      <option>Most Bullied (Lovingly)</option>
+      <option>Most Active Member</option>
+      <option>Voice Chat DJ</option>
+      <option>Fashion Icon</option>
+      <option>Meme Lord</option>
+      <option>Chaos Agent</option>
+      <option>Sleepless Award</option>
+      <option>Best Driver</option>
+    </select>
+
+    <label>Nominee</label>
+    <input type="text" name="nominee" placeholder="Discord username" required />
+
+    <label>Reason (optional)</label>
+    <textarea name="reason" rows="3"></textarea>
+
+    <input type="hidden" name="_redirect" value="success.html">
+
+    <button type="submit">Lock In Nomination</button>
+
+    <footer>
+      Submissions are final.<br>
+      Prestige is permanent.
+    </footer>
+  </form>
+</body>
+</html>
