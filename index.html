@@ -158,56 +158,53 @@
   <div class="poster-overlay"></div>
 
   <!-- Nomination card -->
-  <form
-    <input
+<form
+  class="card"
+  action="https://formspree.io/f/mzznajod"
+  method="POST"
+>
+  <h1>Jävla Award Show 2025</h1>
+
+  <div class="subtitle">
+    An extremely prestigious ceremony<br>
+    with absolutely no consequences.
+  </div>
+
+  <!-- REQUIRED for Formspree -->
+  <input
     type="email"
     name="_replyto"
     value="noreply@javla-awards.local"
     hidden
->
-
-    class="card"
-    action="https://formspree.io/f/YOUR_FORM_ID"
-    method="POST"
   >
-    <h1>Jävla Award Show 2025</h1>
-    <div class="subtitle">
-      An extremely prestigious ceremony<br>
-      with absolutely no consequences.
-    </div>
 
-    <label>Category</label>
-    <select name="category" required>
-      <option value="">Choose wisely…</option>
-      <option>Best Aim</option>
-      <option>Most Improved Player</option>
-      <option>Grinder Award</option>
-      <option>Most Annoying (Fun Way)</option>
-      <option>Most Rage</option>
-      <option>Most Bullied (Lovingly)</option>
-      <option>Most Active Member</option>
-      <option>Voice Chat DJ</option>
-      <option>Fashion Icon</option>
-      <option>Meme Lord</option>
-      <option>Chaos Agent</option>
-      <option>Sleepless Award</option>
-      <option>Best Driver</option>
-    </select>
+  <label>Category</label>
+  <select name="category" required>
+    <option value="">Choose wisely…</option>
+    <option>Best Aim</option>
+    <option>Most Improved Player</option>
+    <option>Grinder Award</option>
+    <option>Most Annoying (Fun Way)</option>
+    <option>Most Rage</option>
+    <option>Most Bullied (Lovingly)</option>
+    <option>Most Active Member</option>
+    <option>Voice Chat DJ</option>
+    <option>Fashion Icon</option>
+    <option>Meme Lord</option>
+    <option>Chaos Agent</option>
+    <option>Sleepless Award</option>
+    <option>Best Driver</option>
+  </select>
 
-    <label>Nominee</label>
-    <input type="text" name="nominee" placeholder="Discord username" required />
+  <label>Nominee</label>
+  <input type="text" name="nominee" required>
 
-    <label>Reason (optional)</label>
-    <textarea name="reason" rows="3"></textarea>
+  <label>Reason (optional)</label>
+  <textarea name="reason" rows="3"></textarea>
 
-    <input type="hidden" name="_redirect" value="success.html">
+  <input type="hidden" name="_redirect" value="success.html">
 
-    <button type="submit">Lock In Nomination</button>
-
-    <footer>
-      Submissions are final.<br>
-      No abusing or I'll blue screen of death your pc. -Senor
-    </footer>
-  </form>
+  <button type="submit">Lock In Nomination</button>
+</form>
 </body>
 </html>
