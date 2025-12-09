@@ -24,6 +24,20 @@
       background: #000;
     }
 
+/* Dropdown list (menu) */
+select option {
+  background-color: #1a1400;
+  color: #ffe79a;
+}
+
+/* Highlighted / selected option */
+select option:checked,
+select option:hover {
+  background-color: #d4af37;
+  color: #2b2300;
+}
+
+    
     /* === CURTAIN OVERLAY === */
     .curtain {
       position: fixed;
@@ -34,24 +48,30 @@
       overflow: hidden;
     }
 
-    .curtain-panel {
-      flex: 1;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.18), transparent 55%),
-        linear-gradient(135deg, #5b0008, #b00020 40%, #5b0008 80%);
-      box-shadow:
-        0 0 40px rgba(0,0,0,0.9),
-        inset 0 0 60px rgba(0,0,0,0.95);
-      transform: translateX(0);
-      pointer-events: none;
-    }
+.curtain-panel {
+  flex: 1;
+  background:
+    linear-gradient(
+      120deg,
+      #3a2a00 0%,
+      #d4af37 25%,
+      #fff1a8 45%,
+      #d4af37 65%,
+      #3a2a00 100%
+    );
+  box-shadow:
+    inset 0 0 120px rgba(255,215,0,0.35),
+    0 0 60px rgba(0,0,0,0.9);
+  transform: translateX(0);
+  pointer-events: none;
+}
 
     .curtain-panel.left {
-      animation: curtain-open-left 5s ease-in-out forwards;
+      animation: curtain-open-left 3.5s ease-in-out forwards;
     }
 
     .curtain-panel.right {
-      animation: curtain-open-right 5s ease-in-out forwards;
+      animation: curtain-open-right 3.5s ease-in-out forwards;
     }
 
     @keyframes curtain-open-left {
@@ -116,22 +136,25 @@
       50% { opacity: 1; }
     }
 
-    .card {
-      background: linear-gradient(
-        180deg,
-        rgba(42,36,6,0.97),
-        rgba(23,19,3,0.97)
-      );
-      padding: 2.6rem;
-      border-radius: 18px;
-      max-width: 480px;
-      width: 92%;
-      box-shadow:
-        0 0 0 1px rgba(255,215,0,0.18),
-        0 30px 90px rgba(0,0,0,0.85),
-        inset 0 0 40px rgba(255,215,0,0.05);
-      z-index: 1;
-    }
+ .card {
+  background: linear-gradient(
+    180deg,
+    rgba(42,36,6,0.97),
+    rgba(23,19,3,0.97)
+  );
+  padding: 2.6rem;
+  border-radius: 18px;
+  max-width: 480px;
+  width: 92%;
+  z-index: 1;
+
+  /* ✨ Glow upgrade */
+  box-shadow:
+    0 0 25px rgba(255,215,0,0.25),
+    0 0 60px rgba(255,215,0,0.18),
+    0 30px 90px rgba(0,0,0,0.85),
+    inset 0 0 40px rgba(255,215,0,0.06);
+}
 
     h1 {
       margin: 0;
