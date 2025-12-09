@@ -21,7 +21,6 @@
       background: #000;
     }
 
-    /* === NORMAL BACKGROUND (LIKE BEFORE) === */
     .background {
       position: fixed;
       inset: 0;
@@ -29,7 +28,6 @@
       z-index: -3;
     }
 
-    /* === SOFT DARK GRADIENT (SUBTLE, OPTIONAL) === */
     .overlay {
       position: fixed;
       inset: 0;
@@ -42,7 +40,6 @@
       pointer-events: none;
     }
 
-    /* === STAR / GLITTER LAYER === */
     .stars {
       position: fixed;
       inset: 0;
@@ -76,7 +73,6 @@
       50% { opacity: 1; }
     }
 
-    /* === CARD === */
     .card {
       background: linear-gradient(
         180deg,
@@ -106,20 +102,44 @@
       text-align: center;
       font-size: 0.95rem;
       opacity: 0.85;
-      margin: 0.6rem 0 2rem;
+      margin: 0.6rem 0 1.6rem;
       font-style: italic;
+    }
+
+    .step-indicator {
+      text-align: center;
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .category-display {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffe79a;
+      margin-bottom: 0.4rem;
+    }
+
+    .category-description {
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-bottom: 1.4rem;
     }
 
     label {
       display: block;
-      margin-top: 1.4rem;
+      margin-top: 1.2rem;
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       opacity: 0.75;
       text-transform: uppercase;
     }
 
-    select, input, textarea {
+    input, select {
       width: 100%;
       margin-top: 0.5rem;
       padding: 0.75rem;
@@ -131,12 +151,20 @@
       box-shadow: inset 0 0 0 1px rgba(255,215,0,0.18);
     }
 
-    select option { background: #1d1a05; }
-    textarea { resize: vertical; }
+    select {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
 
-    button {
+    .button-row {
+      display: flex;
+      gap: 0.6rem;
       margin-top: 2.2rem;
-      width: 100%;
+    }
+
+    .button-row button {
+      flex: 1;
       padding: 1rem;
       border-radius: 14px;
       border: none;
@@ -149,6 +177,12 @@
       text-transform: uppercase;
       box-shadow: 0 10px 30px rgba(212,175,55,0.35);
     }
+
+    .button-secondary {
+      background: rgba(0,0,0,0.65);
+      color: #ffe9a8;
+      box-shadow: inset 0 0 0 1px rgba(255,215,0,0.35);
+    }
   </style>
 </head>
 
@@ -159,6 +193,7 @@
   <div class="stars" id="stars"></div>
 
   <form
+    id="awardsForm"
     class="card"
     action="https://formspree.io/f/mzznajod"
     method="POST"
@@ -170,33 +205,75 @@
       with absolutely no consequences.
     </div>
 
-    <label>Category</label>
-    <select name="category" required>
-      <option value="">Choose wisely…</option>
-      <option>Best Aim</option>
-      <option>Most Improved Player</option>
-      <option>Grinder Award</option>
-      <option>Most Annoying (Fun Way)</option>
-      <option>Most Rage</option>
-      <option>Most Bullied (Lovingly)</option>
-      <option>Most Active Member</option>
-      <option>Voice Chat DJ</option>
-      <option>Fashion Icon</option>
-      <option>Meme Lord</option>
-      <option>Chaos Agent</option>
-      <option>Sleepless Award</option>
-      <option>Best Driver</option>
+    <div class="step-indicator" id="stepIndicator">
+      Category 1 of 14
+    </div>
+
+    <div class="category-display" id="categoryDisplay">
+      Best Aim
+    </div>
+
+    <div class="category-description" id="categoryDescription">
+      Sharpest shooter in the server.
+    </div>
+
+    <!-- Visible fields for current category -->
+    <label for="nomineeSelect">Nominee</label>
+    <select id="nomineeSelect" required>
+      <option value="" disabled selected>Select a member</option>
+      <option value="29B5BC (Genox)">29B5BC (Genox)</option>
+      <option value="Aguero">Aguero</option>
+      <option value="Anime Music Nepal">Anime Music Nepal</option>
+      <option value="bibek">bibek</option>
+      <option value="bob55">bob55</option>
+      <option value="bricxe">bricxe</option>
+      <option value="Coal">Coal</option>
+      <option value="Cyaegha">Cyaegha</option>
+      <option value="e11">e11</option>
+      <option value="G0SEN">G0SEN</option>
+      <option value="godhdim">godhdim</option>
+      <option value="ISTILLBl33D">ISTILLBl33D</option>
+      <option value="Kappa">Kappa</option>
+      <option value="Komal Bhabhi">Komal Bhabhi</option>
+      <option value="Kryyyyy">Kryyyyy</option>
+      <option value="Lexi">Lexi</option>
+      <option value="LuckZ">LuckZ</option>
+      <option value="Lunariss.">Lunariss.</option>
+      <option value="Meooo">Meooo</option>
+      <option value="Nam">Nam</option>
+      <option value="Obscuron">Obscuron</option>
+      <option value="PathlessGiant">PathlessGiant</option>
+      <option value="Prasu.">Prasu.</option>
+      <option value="Ritz….">Ritz….</option>
+      <option value="Rizzler">Rizzler</option>
+      <option value="RJ">RJ</option>
+      <option value="Roxie">Roxie</option>
+      <option value="sahasra">sahasra</option>
+      <option value="Satkar">Satkar</option>
+      <option value="Sidhoni">Sidhoni</option>
+      <option value="sonim">sonim</option>
+      <option value="SquishyPotato">SquishyPotato</option>
+      <option value="suyogya11">suyogya11</option>
+      <option value="Tanner">Tanner</option>
+      <option value="tmromayalu">tmromayalu</option>
+      <option value="Zenxcz">Zenxcz</option>
     </select>
 
-    <label>Nominee</label>
-    <input type="text" name="nominee" required>
-
-    <label>Reason (optional)</label>
-    <textarea name="reason" rows="3"></textarea>
-
+    <!-- Hidden redirect -->
     <input type="hidden" name="_redirect" value="success.html">
 
-    <button type="submit">Lock In Nomination</button>
+    <!-- Buttons -->
+    <div class="button-row">
+      <button type="button" id="prevBtn" class="button-secondary" style="display:none;">
+        Previous
+      </button>
+      <button type="button" id="nextBtn">
+        Next Category
+      </button>
+      <button type="submit" id="submitBtn" style="display:none;">
+        Submit All Nominations
+      </button>
+    </div>
   </form>
 
   <script>
@@ -224,6 +301,158 @@
 
       container.appendChild(star);
     }
+
+    // === MULTI-STEP LOGIC ===
+
+    const categories = [
+      {
+        name: "Best Aim",
+        description: "Sharpest shooter in the server."
+      },
+      {
+        name: "Most Improved Player",
+        description: "Noticeable growth in skill."
+      },
+      {
+        name: "Grinder Award",
+        description: "Spends the most time leveling up or farming."
+      },
+      {
+        name: "Most Annoying (in a fun way)",
+        description: "Lovable troll."
+      },
+      {
+        name: "Most Rage",
+        description: "Biggest rager."
+      },
+      {
+        name: "Most Bullied (lovingly)",
+        description: "The one everyone teases."
+      },
+      {
+        name: "Most Active Member",
+        description: "Never leaves the server."
+      },
+      {
+        name: "Jam Hero",
+        description: "Who gives good musical live."
+      },
+      {
+        name: "Fashion Icon",
+        description: "Coolest profile pic/avatar."
+      },
+      {
+        name: "Meme Lord",
+        description: "Best at dropping memes."
+      },
+      {
+        name: "Chaos Agent",
+        description: "Always stirring things up."
+      },
+      {
+        name: "Sleepless Award",
+        description: "Always pulling all-nighters."
+      },
+      {
+        name: "Bhanja Award",
+        description: "Visits like a mama ghar (once or twice a year)."
+      },
+      {
+        name: "Best Driver",
+        description: "Good at driving in game."
+      }
+    ];
+
+    const nominations = categories.map(() => ({ nominee: "" }));
+
+    let currentIndex = 0;
+
+    const form = document.getElementById("awardsForm");
+    const stepIndicator = document.getElementById("stepIndicator");
+    const categoryDisplay = document.getElementById("categoryDisplay");
+    const categoryDescription = document.getElementById("categoryDescription");
+    const nomineeSelect = document.getElementById("nomineeSelect");
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function renderStep() {
+      const total = categories.length;
+      const cat = categories[currentIndex];
+
+      stepIndicator.textContent = `Category ${currentIndex + 1} of ${total}`;
+      categoryDisplay.textContent = cat.name;
+      categoryDescription.textContent = cat.description;
+
+      // Restore nominee selection for this category
+      const savedNominee = nominations[currentIndex].nominee || "";
+      nomineeSelect.value = savedNominee || "";
+    }
+
+    function saveCurrentStep() {
+      nominations[currentIndex].nominee = nomineeSelect.value;
+    }
+
+    function updateButtons() {
+      const total = categories.length;
+
+      prevBtn.style.display = currentIndex === 0 ? "none" : "inline-block";
+
+      if (currentIndex === total - 1) {
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "inline-block";
+      } else {
+        nextBtn.style.display = "inline-block";
+        submitBtn.style.display = "none";
+      }
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (!nomineeSelect.value) {
+        alert("Please select a nominee for this category before continuing.");
+        return;
+      }
+
+      saveCurrentStep();
+
+      if (currentIndex < categories.length - 1) {
+        currentIndex++;
+        renderStep();
+        updateButtons();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      saveCurrentStep();
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderStep();
+        updateButtons();
+      }
+    });
+
+    form.addEventListener("submit", () => {
+      saveCurrentStep();
+
+      const oldHidden = form.querySelectorAll(".generated-field");
+      oldHidden.forEach(el => el.remove());
+
+      nominations.forEach((entry, index) => {
+        const catName = categories[index].name;
+
+        const nomineeField = document.createElement("input");
+        nomineeField.type = "hidden";
+        nomineeField.className = "generated-field";
+        nomineeField.name = `${catName} - Nominee`;
+        nomineeField.value = entry.nominee;
+        form.appendChild(nomineeField);
+      });
+    });
+
+    // Initial render
+    renderStep();
+    updateButtons();
   </script>
 
 </body>
