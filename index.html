@@ -21,38 +21,62 @@
       background: #000;
     }
 
-    /* === BACKGROUND IMAGE (SHARP BASE) === */
-    .curtains {
+    /* === NORMAL BACKGROUND (LIKE BEFORE) === */
+    .background {
       position: fixed;
       inset: 0;
       background: url("website.jpg") center / cover no-repeat;
-      z-index: -4;
-    }
-
-    /* === BLURRED VERSION OF SAME IMAGE === */
-    .poster-bg {
-      position: fixed;
-      inset: -20%;
-      background: url("website.jpg") center / cover no-repeat;
-      filter: blur(26px);
-      opacity: 0.5;
-      transform: scale(1.25);
       z-index: -3;
     }
 
-    /* === NEUTRAL DARK OVERLAY (NO COLOR TINT) === */
-    .poster-overlay {
+    /* === SOFT DARK GRADIENT (SUBTLE, OPTIONAL) === */
+    .overlay {
       position: fixed;
       inset: 0;
       background: radial-gradient(
         circle at center,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.9)
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.75)
       );
       z-index: -2;
+      pointer-events: none;
     }
 
-    /* === GOLD CARD (UNCHANGED) === */
+    /* === STAR / GLITTER LAYER === */
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(255, 245, 200, 0.95);
+      box-shadow:
+        0 0 4px rgba(255, 230, 160, 0.9),
+        0 0 8px rgba(255, 200, 80, 0.6);
+      opacity: 0.8;
+      animation:
+        floatUp linear infinite,
+        twinkle ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(40px); }
+      to   { transform: translateY(-120vh); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    /* === CARD === */
     .card {
       background: linear-gradient(
         180deg,
@@ -67,7 +91,6 @@
         0 0 0 1px rgba(255,215,0,0.18),
         0 30px 90px rgba(0,0,0,0.85),
         inset 0 0 40px rgba(255,215,0,0.05);
-      position: relative;
       z-index: 1;
     }
 
@@ -125,24 +148,16 @@
       cursor: pointer;
       text-transform: uppercase;
       box-shadow: 0 10px 30px rgba(212,175,55,0.35);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 45px rgba(212,175,55,0.55);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Background layers -->
-  <div class="curtains"></div>
-  <div class="poster-bg"></div>
-  <div class="poster-overlay"></div>
+  <div class="background"></div>
+  <div class="overlay"></div>
+  <div class="stars" id="stars"></div>
 
-  <!-- Nomination card -->
   <form
     class="card"
     action="https://formspree.io/f/mzznajod"
@@ -154,13 +169,6 @@
       An extremely prestigious ceremony<br>
       with absolutely no consequences.
     </div>
-
-    <input
-      type="email"
-      name="_replyto"
-      value="noreply@javla-awards.local"
-      hidden
-    >
 
     <label>Category</label>
     <select name="category" required>
@@ -190,6 +198,33 @@
 
     <button type="submit">Lock In Nomination</button>
   </form>
+
+  <script>
+    // === STAR GENERATOR ===
+    const container = document.getElementById('stars');
+    const COUNT = 40;
+
+    for (let i = 0; i < COUNT; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 120 + 'vh';
+
+      const floatTime = 20 + Math.random() * 20;
+      const twinkleTime = 2 + Math.random() * 3;
+
+      star.style.animationDuration =
+        `${floatTime}s, ${twinkleTime}s`;
+      star.style.animationDelay =
+        `${Math.random() * 20}s, ${Math.random() * 3}s`;
+
+      container.appendChild(star);
+    }
+  </script>
 
 </body>
 </html>
