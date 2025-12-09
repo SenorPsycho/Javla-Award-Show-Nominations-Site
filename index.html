@@ -5,13 +5,16 @@
   <title>Jävla Award Show 2025 – Nominations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: #f5f1e6;
       display: flex;
       justify-content: center;
@@ -19,6 +22,46 @@
       position: relative;
       overflow: hidden;
       background: #000;
+    }
+
+    /* === CURTAIN OVERLAY === */
+    .curtain {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .curtain-panel {
+      flex: 1;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.18), transparent 55%),
+        linear-gradient(135deg, #5b0008, #b00020 40%, #5b0008 80%);
+      box-shadow:
+        0 0 40px rgba(0,0,0,0.9),
+        inset 0 0 60px rgba(0,0,0,0.95);
+      transform: translateX(0);
+      pointer-events: none;
+    }
+
+    .curtain-panel.left {
+      animation: curtain-open-left 5s ease-in-out forwards;
+    }
+
+    .curtain-panel.right {
+      animation: curtain-open-right 5s ease-in-out forwards;
+    }
+
+    @keyframes curtain-open-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @keyframes curtain-open-right {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(100%); }
     }
 
     .background {
@@ -96,6 +139,7 @@
       font-size: 1.75rem;
       letter-spacing: 1px;
       color: #ffe79a;
+      font-family: 'Cinzel', serif;
     }
 
     .subtitle {
@@ -104,6 +148,7 @@
       opacity: 0.85;
       margin: 0.6rem 0 1.6rem;
       font-style: italic;
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     .step-indicator {
@@ -121,6 +166,7 @@
       font-weight: 600;
       color: #ffe79a;
       margin-bottom: 0.4rem;
+      font-family: 'Cinzel', serif;
     }
 
     .category-description {
@@ -128,6 +174,7 @@
       font-size: 0.85rem;
       opacity: 0.9;
       margin-bottom: 1.4rem;
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     label {
@@ -149,6 +196,7 @@
       color: #fff;
       font-size: 0.9rem;
       box-shadow: inset 0 0 0 1px rgba(255,215,0,0.18);
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     select {
@@ -175,6 +223,7 @@
       letter-spacing: 0.08em;
       cursor: pointer;
       text-transform: uppercase;
+      font-family: 'Inter', system-ui, sans-serif;
       box-shadow: 0 10px 30px rgba(212,175,55,0.35);
     }
 
@@ -188,6 +237,12 @@
 
 <body>
 
+  <!-- Curtain overlay on top -->
+  <div class="curtain">
+    <div class="curtain-panel left"></div>
+    <div class="curtain-panel right"></div>
+  </div>
+
   <div class="background"></div>
   <div class="overlay"></div>
   <div class="stars" id="stars"></div>
@@ -198,7 +253,7 @@
     action="https://formspree.io/f/mzznajod"
     method="POST"
   >
-    <h1>Jävla Award Show 2025 <br>"Nomination Voting"</h1>
+    <h1>Jävla Award Show 2025 <br>Nomination Voting</h1>
 
     <div class="subtitle">
       An extremely prestigious ceremony<br>
