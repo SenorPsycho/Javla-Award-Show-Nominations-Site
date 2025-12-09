@@ -21,45 +21,38 @@
       background: #000;
     }
 
-    /* === CURTAINS (MAIN BACKGROUND) === */
+    /* === BACKGROUND IMAGE (SHARP BASE) === */
     .curtains {
       position: fixed;
       inset: 0;
-      background: url("curtains.jpg") center / cover no-repeat;
+      background: url("website.jpg") center / cover no-repeat;
       z-index: -4;
     }
 
-    /* Darken curtains slightly */
-    .curtains-overlay {
+    /* === BLURRED VERSION OF SAME IMAGE === */
+    .poster-bg {
       position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
+      inset: -20%;
+      background: url("website.jpg") center / cover no-repeat;
+      filter: blur(26px);
+      opacity: 0.5;
+      transform: scale(1.25);
       z-index: -3;
     }
 
-    /* === BLURRED POSTER IN CENTER === */
-    .poster-bg {
-      position: fixed;
-      inset: -15%;
-      background: url("poster.jpg") center / cover no-repeat;
-      filter: blur(20px);
-      opacity: 0.55;
-      transform: scale(1.2);
-      z-index: -2;
-    }
-
+    /* === NEUTRAL DARK OVERLAY (NO COLOR TINT) === */
     .poster-overlay {
       position: fixed;
       inset: 0;
       background: radial-gradient(
         circle at center,
-        rgba(255,231,154,0.15),
-        rgba(10,8,3,0.85)
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.9)
       );
-      z-index: -1;
+      z-index: -2;
     }
 
-    /* === GOLD CARD === */
+    /* === GOLD CARD (UNCHANGED) === */
     .card {
       background: linear-gradient(
         180deg,
@@ -139,72 +132,64 @@
       transform: translateY(-1px);
       box-shadow: 0 16px 45px rgba(212,175,55,0.55);
     }
-
-    footer {
-      margin-top: 1.8rem;
-      text-align: center;
-      font-size: 0.7rem;
-      opacity: 0.55;
-      line-height: 1.6;
-    }
   </style>
 </head>
 
 <body>
+
   <!-- Background layers -->
   <div class="curtains"></div>
-  <div class="curtains-overlay"></div>
   <div class="poster-bg"></div>
   <div class="poster-overlay"></div>
 
   <!-- Nomination card -->
-<form
-  class="card"
-  action="https://formspree.io/f/mzznajod"
-  method="POST"
->
-  <h1>Jävla Award Show 2025</h1>
-
-  <div class="subtitle">
-    An extremely prestigious ceremony<br>
-    with absolutely no consequences.
-  </div>
-
-  <!-- REQUIRED for Formspree -->
-  <input
-    type="email"
-    name="_replyto"
-    value="noreply@javla-awards.local"
-    hidden
+  <form
+    class="card"
+    action="https://formspree.io/f/mzznajod"
+    method="POST"
   >
+    <h1>Jävla Award Show 2025</h1>
 
-  <label>Category</label>
-  <select name="category" required>
-    <option value="">Choose wisely…</option>
-    <option>Best Aim</option>
-    <option>Most Improved Player</option>
-    <option>Grinder Award</option>
-    <option>Most Annoying (Fun Way)</option>
-    <option>Most Rage</option>
-    <option>Most Bullied (Lovingly)</option>
-    <option>Most Active Member</option>
-    <option>Voice Chat DJ</option>
-    <option>Fashion Icon</option>
-    <option>Meme Lord</option>
-    <option>Chaos Agent</option>
-    <option>Sleepless Award</option>
-    <option>Best Driver</option>
-  </select>
+    <div class="subtitle">
+      An extremely prestigious ceremony<br>
+      with absolutely no consequences.
+    </div>
 
-  <label>Nominee</label>
-  <input type="text" name="nominee" required>
+    <input
+      type="email"
+      name="_replyto"
+      value="noreply@javla-awards.local"
+      hidden
+    >
 
-  <label>Reason (optional)</label>
-  <textarea name="reason" rows="3"></textarea>
+    <label>Category</label>
+    <select name="category" required>
+      <option value="">Choose wisely…</option>
+      <option>Best Aim</option>
+      <option>Most Improved Player</option>
+      <option>Grinder Award</option>
+      <option>Most Annoying (Fun Way)</option>
+      <option>Most Rage</option>
+      <option>Most Bullied (Lovingly)</option>
+      <option>Most Active Member</option>
+      <option>Voice Chat DJ</option>
+      <option>Fashion Icon</option>
+      <option>Meme Lord</option>
+      <option>Chaos Agent</option>
+      <option>Sleepless Award</option>
+      <option>Best Driver</option>
+    </select>
 
-  <input type="hidden" name="_redirect" value="success.html">
+    <label>Nominee</label>
+    <input type="text" name="nominee" required>
 
-  <button type="submit">Lock In Nomination</button>
-</form>
+    <label>Reason (optional)</label>
+    <textarea name="reason" rows="3"></textarea>
+
+    <input type="hidden" name="_redirect" value="success.html">
+
+    <button type="submit">Lock In Nomination</button>
+  </form>
+
 </body>
 </html>
